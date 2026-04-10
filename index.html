@@ -153,6 +153,104 @@
             font-size: 18px;
         }
 
+        /* Ценовой блок */
+        .pricing-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border: 2px solid #b30808;
+            border-radius: 24px;
+            padding: 40px 30px;
+            margin: 30px 0;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(179, 8, 8, 0.2);
+        }
+        .pricing-box h3 {
+            color: #b30808;
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .price-card {
+            background: #2a2a2a;
+            padding: 20px 30px;
+            border-radius: 16px;
+            min-width: 180px;
+            transition: transform 0.3s;
+        }
+        .price-card:hover {
+            transform: translateY(-5px);
+        }
+        .price-card .price {
+            font-size: 28px;
+            font-weight: bold;
+            color: #b30808;
+        }
+        .price-card .note {
+            font-size: 13px;
+            color: #aaa;
+            margin-top: 5px;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #b30808 0%, #8a0606 100%);
+            border: none;
+        }
+        .highlight .price {
+            color: #fff;
+        }
+        .highlight .note {
+            color: #ffdddd;
+        }
+        .extra-offer {
+            background: #1e2a1e;
+            padding: 20px;
+            border-radius: 16px;
+            margin-top: 20px;
+            border: 1px solid #ffcc00;
+        }
+        .extra-offer .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffcc00;
+        }
+        .limited {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        .hours-info {
+            font-size: 18px;
+            color: #ffcc00;
+            margin: 20px 0;
+        }
+        .book-btn {
+            background: linear-gradient(135deg, #ffcc00 0%, #ffaa00 100%);
+            color: #000;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 18px 50px;
+            margin-top: 25px;
+            border-radius: 50px;
+            transition: 0.3s;
+            box-shadow: 0 5px 20px rgba(255, 204, 0, 0.3);
+        }
+        .book-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ffdd33 0%, #ffbb00 100%);
+            color: #000;
+        }
+
         /* Кнопка переключения языка */
         .lang-switch {
             display: flex;
@@ -187,6 +285,14 @@
             h2 {
                 font-size: 28px;
             }
+            .pricing-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+            .book-btn {
+                font-size: 18px;
+                padding: 14px 30px;
+            }
         }
 
         /* Блок программы */
@@ -201,7 +307,7 @@
             margin-bottom: 10px;
         }
 
-        /* Footer - УПРОЩЕННЫЙ */
+        /* Footer */
         .footer {
             background: #050505;
             padding: 50px 0 30px;
@@ -236,10 +342,6 @@
             border-top: 1px solid #222;
             padding-top: 30px;
             font-size: 14px;
-        }
-        .footer-bottom a {
-            color: #aaa;
-            text-decoration: underline;
         }
 
         /* Popup */
@@ -287,8 +389,16 @@
             margin-bottom: 8px;
             font-weight: 500;
         }
+        .language-info {
+            background: rgba(179, 8, 8, 0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 13px;
+            text-align: center;
+            border-left: 3px solid #b30808;
+        }
 
-        /* Сообщение об отправке */
         .loading-message {
             margin-top: 15px;
             padding: 10px;
@@ -304,7 +414,6 @@
             color: #fff;
         }
 
-        /* Кнопка "Наверх" */
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
@@ -325,17 +434,45 @@
         .scroll-to-top.visible {
             opacity: 1;
         }
+
+        /* Стили для инструктора */
+        .instructor-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #b30808;
+        }
+        .instructor-name {
+            font-size: 32px;
+            color: #b30808;
+            margin-bottom: 20px;
+        }
+        .instructor-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+        .instructor-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .instructor-list li::before {
+            content: "▹";
+            color: #b30808;
+            position: absolute;
+            left: 0;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="op3-designer-element--content">
-    <!-- HEADER - только переключатель языков и кнопка Записаться -->
     <header class="header">
         <div class="container header-inner">
             <div class="logo">
-                <!-- КОММЕНТАРИЙ: ЛОГОТИП - замените URL на свой -->
                 <img src="https://kadochnikov.info/wp-content/uploads/2021/11/logotip-s-chernojnadpisyu.png" alt="Samooborona System">
             </div>
             <div class="header-actions">
@@ -354,10 +491,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <p data-key="hero_date">Training in Cluj-Napoca, April 10, 2026</p>
+                    <p data-key="hero_date">Training in Cluj-Napoca, May 8-9, 2026</p>
                     <h1 style="font-size: 58px;"><span data-key="hero_title1">FORMULA</span> <span style="color: #b30808;" data-key="hero_title2">OF COMBAT</span></h1>
                     <h3 data-key="hero_subtitle">Combat algorithms of the Kadochnikov System</h3>
-                    <p data-key="hero_desc">Gain applied hand-to-hand combat and survival skills in extreme situations under the guidance of an experienced instructor at a three-day intensive training</p>
+                    <p data-key="hero_desc">Gain applied hand-to-hand combat and survival skills in extreme situations under the guidance of an experienced instructor at a two-day intensive training</p>
                     <button class="btn btn-large scroll-to-form-btn" data-key="hero_btn">Sign up for training</button>
                 </div>
                 <div class="col-2"></div>
@@ -365,24 +502,20 @@
         </div>
     </section>
 
-    <!-- Что такое Система Кадочникова -->
+    <!-- Что такое Система Кадочникова (БЕЗ ФОТОГРАФИИ) -->
     <section class="section section-dark">
         <div class="container">
             <h2 data-key="what_title">What is the Kadochnikov System?</h2>
             <div class="row">
                 <div class="col-2">
-                    <p data-key="what_text1"><strong>The Kadochnikov System is a unique author's system of Russian martial art,</strong> developed by Alexey Alexeevich Kadochnikov and further developed under the guidance of his son, Arkady Alexeevich.</p>
+                    <p data-key="what_text1"><strong>The Kadochnikov System is a unique author's system of martial art,</strong> developed by Alexey Alexeevich Kadochnikov and further developed under the guidance of his son, Arkady Alexeevich.</p>
                     <p data-key="what_text2">It is not a set of techniques, but a holistic philosophy of movement and a life support system based on the laws of biomechanics, physics, geometry, psychophysiology and other sciences.</p>
                     <p><strong data-key="what_sections">The system includes the following sections:</strong></p>
                     <ul class="bullet-list">
                         <li data-key="list1">Low acrobatics and rational movement: the basics of survival and mobility.</li>
                         <li data-key="list2">Applied hand-to-hand combat: efficiency as a priority.</li>
-                        <li data-key="list3">Work with weapons: accuracy and reliability through understanding mechanics, physics, geometry.</li>
                         <li data-key="list4">Psychobiomechanics and stress resistance: self-control in an emotionally unstable stressful environment.</li>
                     </ul>
-                </div>
-                <div class="col-2">
-                    <img class="img-fluid" src="https://kadochnikov.info/wp-content/uploads/2021/11/kad-o-9-1024x1024.jpg" alt="A.A. Kadochnikov">
                 </div>
             </div>
         </div>
@@ -398,36 +531,62 @@
             </div>
             <div class="program-card">
                 <h4 data-key="topic2_title">TOPIC 2</h4>
-                <p data-key="topic2_desc">Unbalancing. Contact with the enemy. Contact zones. Impact without brute physical force. How to deprive an enemy of stability with optimal efforts.</p>
+                <p data-key="topic2_desc">Unbalancing. Contact with the opponent. Contact zones. Impact without brute physical force. How to deprive an opponent of stability with optimal efforts.</p>
             </div>
             <div class="program-card">
                 <h4 data-key="topic3_title">TOPIC 3</h4>
-                <p data-key="topic3_desc">Release from grabs. Countering physical impact in grabs. Basic skills that allow you to use the enemy's force against him.</p>
+                <p data-key="topic3_desc">Release from grabs. Countering physical impact in grabs. Basic skills that allow you to use the opponent's force against him.</p>
             </div>
             <div class="program-card">
                 <h4 data-key="topic4_title">TOPIC 4</h4>
                 <p data-key="topic4_desc">Protection against strikes. Principles of building protection against strikes. Using theoretical forms of physics, mechanics, geometry to meet the strike. Consideration of psychophysical processes.</p>
             </div>
-            <div class="program-card">
-                <h4 data-key="topic5_title">TOPIC 5</h4>
-                <p data-key="topic5_desc">Work with objects and weapons. Forming the meeting of strikes with objects. Basic skills of building a meeting. Using theoretical forms of physics, mechanics, geometry and capabilities of biomechanical body forms.</p>
+        </div>
+    </section>
+
+    <!-- ЦЕНОВОЙ БЛОК (первые 5 человек) -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="pricing-box">
+                <div class="limited" data-key="limited">⚠️ Количество мест ограничено! ⚠️</div>
+                <h3 data-key="pricing_title">Стоимость участия:</h3>
+                <div class="pricing-grid">
+                    <div class="price-card highlight">
+                        <div class="price" data-key="price1">900 lei</div>
+                        <div class="note" data-key="price1_note">первые 5 человек</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="price" data-key="price2">1100 lei</div>
+                        <div class="note" data-key="price2_note">до 1 мая</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="price" data-key="price3">1500 lei</div>
+                        <div class="note" data-key="price3_note">с 1 по 7 мая</div>
+                    </div>
+                </div>
+                <div class="extra-offer">
+                    <div class="price" data-key="extra_price">+300 lei</div>
+                    <div data-key="extra_desc">Индивидуальная консультация + занятие для двух человек (1.5 часа) 8 и 9 мая</div>
+                </div>
+                <div class="hours-info" data-key="hours_info">⏰ Всего 3 часа: 8 мая и 9 мая ⏰</div>
+                <button class="btn book-btn scroll-to-form-btn" data-key="book_btn">🏃 ЗАБРОНИРОВАТЬ МЕСТО 🏃</button>
             </div>
         </div>
     </section>
 
     <!-- Видеоотчет -->
-    <section class="section section-dark">
+    <section class="section">
         <div class="container" style="text-align: center;">
             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 30px;">
                 <iframe style="position: absolute; top:0; left:0; width:100%; height:100%;" src="https://kinescope.io/embed/hPFB2c1rzsVpakFc5T2yfH" frameborder="0" allowfullscreen></iframe>
             </div>
-            <p data-key="video_caption">Video report of one of the trainings on the Kadochnikov System in Krasnodar</p>
+            <p data-key="video_caption">Video report of one of the trainings on the Kadochnikov System</p>
             <button class="btn scroll-to-form-btn" data-key="hero_btn">Sign up for training</button>
         </div>
     </section>
 
     <!-- Преимущества -->
-    <section class="section">
+    <section class="section section-dark">
         <div class="container">
             <h2 data-key="benefits_title">Advantages of practicing the Kadochnikov System</h2>
             <div class="row">
@@ -462,25 +621,25 @@
         </div>
     </section>
 
-    <!-- Инструктор -->
-    <section class="section section-dark">
+    <!-- Инструктор - Nikola En -->
+    <section class="section">
         <div class="container">
-            <h2 data-key="instructor_title">Training Instructor and Head of the SC Center</h2>
-            <div class="row">
-                <div class="col-2">
-                    <h3 data-key="instructor_name">Arkady Alexeevich Kadochnikov</h3>
-                    <ul class="bullet-list">
-                        <li data-key="inst1"><strong>Military professional (reserve lieutenant colonel).</strong> Since 1994, he served in military unit 62986 as deputy commander of a special operations group. Has teaching experience since 1986.</li>
-                        <li data-key="inst2"><strong>Corresponding member of the Petrovsky Academy of Sciences and Arts.</strong></li>
-                        <li data-key="inst3"><strong>Officer, patriot of Russia,</strong> together with Alexey Alexeevich Kadochnikov made a great contribution to the development of the system of personal safety techniques.</li>
-                    </ul>
-                </div>
+            <h2 data-key="instructor_title">Training Instructor</h2>
+            <div class="instructor-card">
+                <div class="instructor-name" data-key="instructor_name">Nikola En</div>
+                <ul class="instructor-list">
+                    <li data-key="inst1">Последователь Системы Кадочникова с 2011 года</li>
+                    <li data-key="inst2">Участник семинаров Системы Кадочникова</li>
+                    <li data-key="inst3">Инструктор системы самообороны А.А. Кадочникова для детей и взрослых</li>
+                    <li data-key="inst4">Коуч, регрессолог, исследователь возможностей человека</li>
+                    <li data-key="inst5">Основатель детской онлайн школы. Миссия школы - раскрыть внутренний потенциал детей и объединять семьи во всем мире</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Расписание и место -->
-    <section class="section">
+    <!-- Расписание и место (без карты) -->
+    <section class="section section-dark">
         <div class="container">
             <h2 data-key="schedule_title">Schedule and venue</h2>
             <div class="row">
@@ -488,24 +647,25 @@
                     <ul class="bullet-list">
                         <li data-key="address"><strong>Training address:</strong> Cluj-Napoca, Romania</li>
                         <li data-key="travel2"><i>Right in the center!</i></li>
-                        <li data-key="schedule_dates"><strong>Training schedule:</strong><br>• April 24 - 08:00 - 13:00<br>• April 25 - 08:00 - 13:00<br>• April 26 - 08:00 - 13:00</li>
+                        <li data-key="schedule_dates"><strong>Training schedule:</strong><br>• May 8 - 08:00 - 11:00<br>• May 9 - 08:00 - 11:00<br>• Total: 3 hours</li>
                     </ul>
                 </div>
                 <div class="col-2">
-                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afa746ae79e2a1054436836b5aee6a867ea1b133bba48ebcba2e84e7530ea58d7&amp;source=constructor" width="100%" height="360" frameborder="0"></iframe>
+                    <div style="background: #1a1a1a; border-radius: 12px; padding: 30px; text-align: center; border: 1px solid #b30808;">
+                        <p style="font-size: 18px;" data-key="location_note">📍 Точный адрес будет отправлен после регистрации</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ФОРМА РЕГИСТРАЦИИ -->
-    <section class="section section-dark" id="register-section">
+    <section class="section" id="register-section">
         <div class="container" style="max-width: 700px; text-align: center;">
             <h2 data-key="form_title">Registration Form</h2>
-            <p data-key="form_subtitle">3-day intensive training "Formula of Combat. Combat algorithms of the Kadochnikov System"</p>
-            <p><strong data-key="form_price">Participation fee: 300 EUR</strong></p>
+            <p data-key="form_subtitle">2-day intensive training "Formula of Combat. Combat algorithms of the Kadochnikov System"</p>
             <button class="btn btn-large open-popup-btn" style="margin-top: 20px;" data-key="form_btn">REGISTER FOR THE TRAINING</button>
-            <p style="margin-top: 20px; font-size: 14px;" data-key="form_note">To participate in the training, you must fill out the form and register. Click the button above, fill out the form and the support service will contact you to confirm participation.</p>
+            <p style="margin-top: 20px; font-size: 14px;" data-key="form_note">To participate in the training, you must fill out the form and register. Click the button above, fill out the form and we will contact you to confirm participation.</p>
         </div>
     </section>
 
@@ -517,21 +677,25 @@
                     <img src="https://kadochnikov.info/wp-content/uploads/2021/11/logotip-s-belojnadpisyu.png" alt="Samooborona System" style="max-height: 60px;">
                 </div>
                 <div class="footer-contacts">
-                    <p><strong>Free phone:</strong> <a href="tel:88005000958">8-800-500-09-58</a></p>
-                    <p><strong>E-mail:</strong> <a href="mailto:support@neoglory.ru">support@neoglory.ru</a></p>
-                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/79284117604">+7 (928) 411-76-04</a></p>
+                    <p><strong>E-mail:</strong> <a href="myrenr@proton.me">info@samooborona.ro</a></p>
                 </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Samooborona Cluj | Kadochnikov System Training in Romania</p>
             </div>
         </div>
     </footer>
 </div>
 
-<!-- POPUP (всплывающая форма) -->
+<!-- POPUP (всплывающая форма с информацией о языке) -->
 <div id="popupForm" class="popup-overlay">
     <div class="popup-content">
         <span class="close-popup">&times;</span>
         <h3 data-key="popup_title">Registration for training</h3>
-        <p data-key="popup_desc">Fill out the form and we will issue an invoice for payment of participation</p>
+        <p data-key="popup_desc">Fill out the form and we will contact you</p>
+        <div class="language-info" data-key="language_info">
+            📢 Тренинг проводится на русском и украинском языках. В присутствии профессионального переводчика. Все участники будут обеспечены полноценным переводом.
+        </div>
         <form id="registerForm">
             <div class="form-group">
                 <label data-key="popup_name">First name *</label>
@@ -555,35 +719,28 @@
     </div>
 </div>
 
-<!-- Кнопка "Наверх" -->
 <div class="scroll-to-top" id="scrollToTop">↑</div>
 
 <script>
     // ========== НАСТРОЙКИ TELEGRAM БОТА ==========
-    // 🔴 ВАЖНО: Замените на свои данные! 🔴
-    // Как получить:
-    // 1. Напишите @BotFather в Telegram, создайте бота и получите TOKEN
-    // 2. Напишите @userinfobot, нажмите Start, получите ваш CHAT_ID
-    const BOT_TOKEN = '8720019189:AAHMyG-vR2bg-hA_RGv8QAxLH0CvfEGFuVI';     // ← ВСТАВЬТЕ СВОЙ ТОКЕН (пример: 1234567890:ABCdefGHIjklMNOpqrsTUVwxyz)
-    const CHAT_ID = '8720019189';         // ← ВСТАВЬТЕ СВОЙ CHAT_ID (пример: 123456789)
-    // ========================================
+    const BOT_TOKEN = '8720019189:AAHMyG-vR2bg-hA_RGv8QAxLH0CvfEGFuVI';
+    const CHAT_ID = '8587891595';
+    // ============================================
 
-    // ========== ПЕРЕВОД НА РУМЫНСКИЙ И АНГЛИЙСКИЙ ==========
     const translations = {
         ru: {
-            hero_date: "Тренинг в Клуж-Напока 10 апреля 2026 г.",
+            hero_date: "Тренинг в Клуж-Напока 8, 9 мая 2026 г.",
             hero_title1: "ФОРМУЛА",
             hero_title2: "БОЯ",
             hero_subtitle: "Боевые алгоритмы Системы Кадочникова",
-            hero_desc: "Получите навыки прикладного рукопашного боя и выживания в экстремальных ситуациях под руководством опытного инструктора на трехдневном тренинге-интенсиве",
+            hero_desc: "Получите навыки прикладного рукопашного боя и выживания в экстремальных ситуациях под руководством опытного инструктора на двухдневном тренинге-интенсиве",
             hero_btn: "Записаться на тренинг",
             what_title: "Что такое Система Кадочникова?",
-            what_text1: "Система Кадочникова — это уникальная авторская система русского боевого искусства, разработанная Алексеем Алексеевичем Кадочниковым и получившая дальнейшее развитие под руководством его сына, Аркадия Алексеевича.",
+            what_text1: "Система Кадочникова — это уникальная авторская система боевого искусства, разработанная Алексеем Алексеевичем Кадочниковым и получившая дальнейшее развитие под руководством его сына, Аркадия Алексеевича.",
             what_text2: "Это не набор приёмов, а целостная философия движения и система жизнеобеспечения, основанная на законах биомеханики, физики, геометрии, психофизиологии и других наук.",
             what_sections: "Система включает в себя следующие разделы:",
             list1: "Нижняя акробатика и рациональное движение: основы выживания и мобильности.",
             list2: "Прикладной рукопашный бой: эффективность как приоритет.",
-            list3: "Работа с оружием: точность и надежность через понимание механики, физики, геометрии.",
             list4: "Психобиомеханика и стрессоустойчивость: управление собой в эмоционально нестабильной стрессовой обстановке.",
             program_title: "Программа тренинга",
             topic1_title: "ТЕМА 1",
@@ -594,9 +751,7 @@
             topic3_desc: "Освобождение от захватов. Противодействие физическому воздействию в захватах. Базовые навыки, которые позволят использовать силу противника против него самого.",
             topic4_title: "ТЕМА 4",
             topic4_desc: "Защита от ударов. Принципы построения защиты от ударов. Использование теоретических форм физики, механики, геометрии для построения встречи удара. Рассмотрение психофизических процессов.",
-            topic5_title: "ТЕМА 5",
-            topic5_desc: "Работа с предметами и оружием. Формирование встречи ударов предметами. Базовые навыки построения встречи. Использование теоретических форм физики, механики, геометрии и возможностей биомеханических форм тела.",
-            video_caption: "Видеоотчет одного из тренингов по Системе Кадочникова в Краснодаре",
+            video_caption: "Видеоотчет одного из тренингов по Системе Кадочникова",
             benefits_title: "Преимущества занятий Системой Кадочникова",
             benefit1: "Физическое развитие",
             benefit2: "Духовное развитие",
@@ -613,55 +768,67 @@
             intel2: "Аналитические способности",
             intel3: "Скорость мышления и прогнозирование",
             intel4: "Развитие сознания и внимания",
-            instructor_title: "Инструктор тренинга и руководитель Центра СК",
-            instructor_name: "Аркадий Алексеевич Кадочников",
-            inst1: "Военный профессионал (подполковник запаса). С 1994 г. проходил военную службу в воинской части 62986 в качестве заместителя командира группы специальных операций. Занимался подготовкой переменного состава и выполнением боевых задач. В 2002 году уволился в запас. Имеет опыт преподавания с 1986 года.",
-            inst2: "Член-корреспондент Петровской академии наук и искусств.",
-            inst3: "Офицер, патриот России, вместе с Алексеем Алексеевичем Кадочниковым внес большой вклад в развитие системы личной техники безопасности человека в экстремальных условиях и профессионально-прикладных аспектов рукопашного боя. Продолжает дело отца.",
+            instructor_title: "Инструктор тренинга",
+            instructor_name: "Nikola En",
+            inst1: "Последователь Системы Кадочникова с 2011 года",
+            inst2: "Участник семинаров Системы Кадочникова",
+            inst3: "Инструктор системы самообороны А.А. Кадочникова для детей и взрослых",
+            inst4: "Коуч, регрессолог, исследователь возможностей человека",
+            inst5: "Основатель детской онлайн школы. Миссия школы - раскрыть внутренний потенциал детей и объединять семьи во всем мире",
             schedule_title: "Расписание занятий и место проведения",
             address: "Адрес проведения тренинга: г. Клуж-Напока, Румыния",
             travel2: "Прямо в центре!",
-            schedule_dates: "Расписание тренинга:\n• 24 апреля - 08:00 - 13:00\n• 25 апреля - 08:00 - 13:00\n• 26 апреля - 08:00 - 13:00",
+            schedule_dates: "Расписание тренинга:\n• 8 мая - 08:00 - 11:00\n• 9 мая - 08:00 - 11:00\n• Всего 3 часа",
+            location_note: "📍 Точный адрес будет отправлен после регистрации",
             form_title: "Форма Регистрации",
-            form_subtitle: "3-дневный тренинг-интенсив «Формула боя. Боевые алгоритмы Системы Кадочникова»",
-            form_price: "Стоимость участия: 300 евро",
+            form_subtitle: "2-дневный тренинг-интенсив «Формула боя. Боевые алгоритмы Системы Кадочникова»",
             form_btn: "ЗАРЕГИСТРИРОВАТЬСЯ НА ТРЕНИНГ",
-            form_note: "Для участия в тренинге необходимо заполнить форму и зарегистрироваться. Нажмите кнопку выше, заполните форму и служба поддержки свяжется с вами для подтверждения участия.",
+            form_note: "Для участия в тренинге необходимо заполнить форму и зарегистрироваться. Заполните форму и мы свяжемся с вами для подтверждения участия.",
             popup_title: "Регистрация на тренинг",
-            popup_desc: "Заполните форму и мы выставим счет для оплаты участия",
+            popup_desc: "Заполните форму и мы свяжемся с вами",
             popup_name: "Имя *",
             popup_surname: "Фамилия *",
             popup_email: "Email *",
             popup_phone: "Телефон *",
-            popup_submit: "Отправить Заявку"
+            popup_submit: "Отправить Заявку",
+            language_info: "📢 Тренинг проводится на русском и украинском языках. В присутствии профессионального переводчика. Все участники будут обеспечены полноценным переводом.",
+            limited: "⚠️ Количество мест ограничено! ⚠️",
+            pricing_title: "Стоимость участия:",
+            price1: "900 lei",
+            price1_note: "первые 5 человек",
+            price2: "1100 lei",
+            price2_note: "до 1 мая",
+            price3: "1500 lei",
+            price3_note: "с 1 по 7 мая",
+            extra_price: "+300 lei",
+            extra_desc: "Индивидуальная консультация + занятие для двух человек (1.5 часа) 8 и 9 мая",
+            hours_info: "⏰ Всего 3 часа: 8 мая и 9 мая ⏰",
+            book_btn: "🏃 ЗАБРОНИРОВАТЬ МЕСТО 🏃"
         },
         ro: {
-            hero_date: "Antrenament la Cluj-Napoca, 10 aprilie 2026",
+            hero_date: "Antrenament în Cluj-Napoca, 8-9 mai 2026",
             hero_title1: "FORMULA",
             hero_title2: "LUPtei",
             hero_subtitle: "Algoritmi de luptă ai Sistemului Kadochnikov",
-            hero_desc: "Obțineți abilități de luptă corporală aplicată și supraviețuire în situații extreme sub îndrumarea unui instructor experimentat la un antrenament intensiv de trei zile",
+            hero_desc: "Obțineți abilități de luptă corporală aplicată și supraviețuire în situații extreme sub îndrumarea unui instructor experimentat la un antrenament intensiv de două zile",
             hero_btn: "Înscrie-te la antrenament",
             what_title: "Ce este Sistemul Kadochnikov?",
-            what_text1: "Sistemul Kadochnikov este un sistem unic de arte marțiale rusești, dezvoltat de Alexei Kadochnikov și dezvoltat în continuare sub conducerea fiului său, Arkadi Kadochnikov.",
+            what_text1: "Sistemul Kadochnikov este un sistem unic de arte marțiale, dezvoltat de Alexei Kadochnikov și dezvoltat în continuare sub conducerea fiului său, Arkadi Kadochnikov.",
             what_text2: "Nu este un set de tehnici, ci o filozofie holistică a mișcării și un sistem de susținere a vieții bazat pe legile biomecanicii, fizicii, geometriei, psihofiziologiei și altor științe.",
             what_sections: "Sistemul include următoarele secțiuni:",
             list1: "Acrobatică joasă și mișcare rațională: bazele supraviețuirii și mobilității.",
             list2: "Luptă corporală aplicată: eficiența ca prioritate.",
-            list3: "Lucrul cu armele: precizie și fiabilitate prin înțelegerea mecanicii, fizicii, geometriei.",
             list4: "Psihobiomecanică și rezistență la stres: controlul sinelui în situații emoțional instabile.",
             program_title: "Programul antrenamentului",
             topic1_title: "TEMA 1",
-            topic1_desc: "Pregătirea corpului. Lucrul pe planșeu. Poziție și mișcări. Exerciții pregătitoare speciale de acrobatică joasă: tumba, căderi, rostogoliri. Eliminarea fricii și tensiunii. Formarea abilităților motorii de bază - fundația întregului Sistem.",
+            topic1_desc: "Pregătirea corpului. Lucrul pe planșeu. Poziție și mișcări. Exerciții pregătitoare speciale de acrobatică joasă.",
             topic2_title: "TEMA 2",
-            topic2_desc: "Dezechilibrarea. Contactul cu adversarul. Zonele de contact. Acțiune fără forță fizică brută. Cum să privați adversarul de stabilitate cu eforturi optime.",
+            topic2_desc: "Dezechilibrarea. Contactul cu adversarul. Zonele de contact. Acțiune fără forță fizică brută.",
             topic3_title: "TEMA 3",
-            topic3_desc: "Eliberarea din prize. Contracararea acțiunii fizice în prize. Abilități de bază care vă permit să folosiți forța adversarului împotriva lui.",
+            topic3_desc: "Eliberarea din prize. Contracararea acțiunii fizice în prize.",
             topic4_title: "TEMA 4",
-            topic4_desc: "Protecția împotriva loviturilor. Principii de construire a protecției împotriva loviturilor. Utilizarea formelor teoretice ale fizicii, mecanicii, geometriei pentru a întâmpina lovitura.",
-            topic5_title: "TEMA 5",
-            topic5_desc: "Lucrul cu obiecte și arme. Formarea întâmpinării loviturilor cu obiecte. Abilități de bază.",
-            video_caption: "Reportaj video de la unul dintre antrenamentele Sistemului Kadochnikov din Krasnodar",
+            topic4_desc: "Protecția împotriva loviturilor. Principii de construire a protecției împotriva loviturilor.",
+            video_caption: "Reportaj video de la unul dintre antrenamentele Sistemului Kadochnikov",
             benefits_title: "Avantajele practicării Sistemului Kadochnikov",
             benefit1: "Dezvoltare fizică",
             benefit2: "Dezvoltare spirituală",
@@ -678,55 +845,67 @@
             intel2: "Abilități analitice",
             intel3: "Viteza de gândire și prognozare",
             intel4: "Dezvoltarea conștiinței și atenției",
-            instructor_title: "Instructorul antrenamentului și șeful Centrului SK",
-            instructor_name: "Arkadiy Alexeevici Kadochnikov",
-            inst1: "Profesionist militar (locotenent-colonel în rezervă). Din 1994 a servit în unitatea militară 62986 ca adjunct al comandantului grupului de operațiuni speciale. Are experiență în predare din 1986.",
-            inst2: "Membru-corespondent al Academiei Petrovsky de Științe și Arte.",
-            inst3: "Ofițer, patriot al Rusiei, împreună cu Alexei Kadochnikov a adus o mare contribuție la dezvoltarea sistemului de siguranță personală și aspectelor aplicate ale luptei corp la corp. Continuă munca tatălui său.",
+            instructor_title: "Instructorul antrenamentului",
+            instructor_name: "Nikola En",
+            inst1: "Următor al Sistemului Kadochnikov din 2011",
+            inst2: "Participant la seminarele Sistemului Kadochnikov",
+            inst3: "Instructor al sistemului de autoapărare A.A. Kadochnikov pentru copii și adulți",
+            inst4: "Coach, regresolog, cercetător al potențialului uman",
+            inst5: "Fondator al școlii online pentru copii. Misiunea școlii - de a dezvălui potențialul interior al copiilor și de a uni familiile din întreaga lume",
             schedule_title: "Orarul și locul desfășurării",
             address: "Adresa: Cluj-Napoca, Romania",
             travel2: "Centru!",
-            schedule_dates: "Orar antrenament:\n• 24 aprilie - 08:00 - 13:00\n• 25 aprilie - 08:00 - 13:00\n• 26 aprilie - 08:00 - 13:00",
+            schedule_dates: "Orar antrenament:\n• 8 mai - 08:00 - 11:00\n• 9 mai - 08:00 - 11:00\n• Total 3 ore",
+            location_note: "📍 Adresa exactă va fi trimisă după înregistrare",
             form_title: "Formular de înregistrare",
-            form_subtitle: "Antrenament intensiv de 3 zile „Formula luptei. Algoritmi de luptă ai Sistemului Kadochnikov”",
-            form_price: "Costul participării: 300 euro",
+            form_subtitle: "Antrenament intensiv de 2 zile „Formula luptei. Algoritmi de luptă ai Sistemului Kadochnikov”",
             form_btn: "ÎNREGISTREAZĂ-TE LA ANTRENAMENT",
-            form_note: "Pentru a participa la antrenament, completați formularul și vă vom contacta pentru confirmare.",
+            form_note: "Pentru a participa la antrenament, completați formularul și vă vom contacta.",
             popup_title: "Înregistrare la antrenament",
-            popup_desc: "Completați formularul și vă vom trimite factura",
+            popup_desc: "Completați formularul și vă vom contacta",
             popup_name: "Prenume *",
             popup_surname: "Nume de familie *",
             popup_email: "Email *",
             popup_phone: "Telefon *",
-            popup_submit: "Trimite cererea"
+            popup_submit: "Trimite cererea",
+            language_info: "📢 Antrenamentul se desfășoară în limbile rusă și ucraineană. Cu prezența unui traducător profesionist. Toți participanții vor beneficia de traducere completă.",
+            limited: "⚠️ Numărul de locuri este limitat! ⚠️",
+            pricing_title: "Costul participării:",
+            price1: "900 lei",
+            price1_note: "primele 5 persoane",
+            price2: "1100 lei",
+            price2_note: "până pe 1 mai",
+            price3: "1500 lei",
+            price3_note: "1-7 mai",
+            extra_price: "+300 lei",
+            extra_desc: "Consultanță individuală + sesiune pentru două persoane (1.5 ore) 8 și 9 mai",
+            hours_info: "⏰ Total 3 ore: 8 mai și 9 mai ⏰",
+            book_btn: "🏃 REZERVĂ LOCUL 🏃"
         },
         en: {
-            hero_date: "Training in Cluj-Napoca, April 10, 2026",
+            hero_date: "Training in Cluj-Napoca, May 8-9, 2026",
             hero_title1: "FORMULA",
             hero_title2: "OF COMBAT",
             hero_subtitle: "Combat algorithms of the Kadochnikov System",
-            hero_desc: "Gain applied hand-to-hand combat and survival skills in extreme situations under the guidance of an experienced instructor at a three-day intensive training",
+            hero_desc: "Gain applied hand-to-hand combat and survival skills in extreme situations under the guidance of an experienced instructor at a two-day intensive training",
             hero_btn: "Sign up for training",
             what_title: "What is the Kadochnikov System?",
-            what_text1: "The Kadochnikov System is a unique author's system of Russian martial art, developed by Alexey Alexeevich Kadochnikov and further developed under the guidance of his son, Arkady Alexeevich.",
+            what_text1: "The Kadochnikov System is a unique author's system of martial art, developed by Alexey Alexeevich Kadochnikov and further developed under the guidance of his son, Arkady Alexeevich.",
             what_text2: "It is not a set of techniques, but a holistic philosophy of movement and a life support system based on the laws of biomechanics, physics, geometry, psychophysiology and other sciences.",
             what_sections: "The system includes the following sections:",
             list1: "Low acrobatics and rational movement: the basics of survival and mobility.",
             list2: "Applied hand-to-hand combat: efficiency as a priority.",
-            list3: "Work with weapons: accuracy and reliability through understanding mechanics, physics, geometry.",
             list4: "Psychobiomechanics and stress resistance: self-control in an emotionally unstable stressful environment.",
             program_title: "Training Program",
             topic1_title: "TOPIC 1",
             topic1_desc: "Body preparation. Work on the floor plane. Stance and movements. Special preparatory exercises of low acrobatics: somersaults, falls, rolls. Removing fear and tension. Formation of basic motor skills - the foundation of the entire System.",
             topic2_title: "TOPIC 2",
-            topic2_desc: "Unbalancing. Contact with the enemy. Contact zones. Impact without brute physical force. How to deprive an enemy of stability with optimal efforts.",
+            topic2_desc: "Unbalancing. Contact with the opponent. Contact zones. Impact without brute physical force. How to deprive an opponent of stability with optimal efforts.",
             topic3_title: "TOPIC 3",
-            topic3_desc: "Release from grabs. Countering physical impact in grabs. Basic skills that allow you to use the enemy's force against him.",
+            topic3_desc: "Release from grabs. Countering physical impact in grabs. Basic skills that allow you to use the opponent's force against him.",
             topic4_title: "TOPIC 4",
             topic4_desc: "Protection against strikes. Principles of building protection against strikes. Using theoretical forms of physics, mechanics, geometry to meet the strike. Consideration of psychophysical processes.",
-            topic5_title: "TOPIC 5",
-            topic5_desc: "Work with objects and weapons. Forming the meeting of strikes with objects. Basic skills of building a meeting. Using theoretical forms of physics, mechanics, geometry and capabilities of biomechanical body forms.",
-            video_caption: "Video report of one of the trainings on the Kadochnikov System in Krasnodar",
+            video_caption: "Video report of one of the trainings on the Kadochnikov System",
             benefits_title: "Advantages of practicing the Kadochnikov System",
             benefit1: "Physical development",
             benefit2: "Spiritual development",
@@ -743,27 +922,42 @@
             intel2: "Analytical skills",
             intel3: "Speed of thinking and forecasting",
             intel4: "Development of consciousness and attention",
-            instructor_title: "Training Instructor and Head of the SC Center",
-            instructor_name: "Arkady Alexeevich Kadochnikov",
-            inst1: "Military professional (reserve lieutenant colonel). Since 1994, he served in military unit 62986 as deputy commander of a special operations group. Has teaching experience since 1986.",
-            inst2: "Corresponding member of the Petrovsky Academy of Sciences and Arts.",
-            inst3: "Officer, patriot of Russia, together with Alexey Alexeevich Kadochnikov made a great contribution to the development of the system of personal safety techniques in extreme conditions and professional-applied aspects of hand-to-hand combat. Continues his father's work.",
+            instructor_title: "Training Instructor",
+            instructor_name: "Nikola En",
+            inst1: "Follower of the Kadochnikov System since 2011",
+            inst2: "Participant of Kadochnikov System seminars",
+            inst3: "Instructor of A.A. Kadochnikov's self-defense system for children and adults",
+            inst4: "Coach, regressologist, researcher of human potential",
+            inst5: "Founder of an online children's school. The school's mission is to unlock the inner potential of children and unite families around the world",
             schedule_title: "Schedule and venue",
             address: "Training address: Cluj-Napoca, Romania",
             travel2: "Right in the center!",
-            schedule_dates: "Training schedule:\n• April 24 - 08:00 - 13:00\n• April 25 - 08:00 - 13:00\n• April 26 - 08:00 - 13:00",
+            schedule_dates: "Training schedule:\n• May 8 - 08:00 - 11:00\n• May 9 - 08:00 - 11:00\n• Total 3 hours",
+            location_note: "📍 Exact address will be sent after registration",
             form_title: "Registration Form",
-            form_subtitle: "3-day intensive training \"Formula of Combat. Combat algorithms of the Kadochnikov System\"",
-            form_price: "Participation fee: 300 EUR",
+            form_subtitle: "2-day intensive training \"Formula of Combat. Combat algorithms of the Kadochnikov System\"",
             form_btn: "REGISTER FOR THE TRAINING",
-            form_note: "To participate in the training, you must fill out the form and register. Click the button above, fill out the form and the support service will contact you to confirm participation.",
+            form_note: "To participate in the training, you must fill out the form and register. Fill out the form and we will contact you to confirm participation.",
             popup_title: "Registration for training",
-            popup_desc: "Fill out the form and we will issue an invoice for payment of participation",
+            popup_desc: "Fill out the form and we will contact you",
             popup_name: "First name *",
             popup_surname: "Last name *",
             popup_email: "Email *",
             popup_phone: "Phone *",
-            popup_submit: "Submit Application"
+            popup_submit: "Submit Application",
+            language_info: "📢 The training is conducted in Russian and Ukrainian. A professional interpreter will be present. All participants will be provided with full translation.",
+            limited: "⚠️ Limited number of places! ⚠️",
+            pricing_title: "Participation fee:",
+            price1: "900 lei",
+            price1_note: "first 5 people",
+            price2: "1100 lei",
+            price2_note: "until May 1",
+            price3: "1500 lei",
+            price3_note: "May 1-7",
+            extra_price: "+300 lei",
+            extra_desc: "Individual consultation + session for two people (1.5 hours) on May 8 and 9",
+            hours_info: "⏰ Total 3 hours: May 8 and May 9 ⏰",
+            book_btn: "🏃 BOOK YOUR SPOT 🏃"
         }
     };
 
@@ -790,14 +984,12 @@
         btn.addEventListener('click', () => updateLanguage(btn.getAttribute('data-lang')));
     });
 
-    // Плавный скролл к форме
     document.querySelectorAll('.scroll-to-form-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             document.getElementById('register-section').scrollIntoView({ behavior: 'smooth' });
         });
     });
 
-    // POPUP
     const popup = document.getElementById('popupForm');
     const openBtns = document.querySelectorAll('.open-popup-btn');
     const closeBtn = document.querySelector('.close-popup');
@@ -805,32 +997,24 @@
     closeBtn.addEventListener('click', () => popup.style.display = 'none');
     window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
 
-    // Функция отправки в Telegram
     async function sendToTelegram(name, surname, email, phone) {
-        const message = `🔔 НОВАЯ ЗАЯВКА НА ТРЕНИНГ! 🔔\n\n👤 Имя: ${name}\n👤 Фамилия: ${surname}\n📧 Email: ${email}\n📞 Телефон: ${phone}\n🌍 Язык страницы: ${currentLang.toUpperCase()}\n🕐 Время: ${new Date().toLocaleString('ru-RU')}`;
+        const message = `🔔 НОВАЯ ЗАЯВКА НА ТРЕНИНГ! 🔔\n\n👤 Имя: ${name}\n👤 Фамилия: ${surname}\n📧 Email: ${email}\n📞 Телефон: ${phone}\n🌍 Язык страницы: ${currentLang.toUpperCase()}\n🕐 Время: ${new Date().toLocaleString('ro-RO')}\n📍 Тренинг: Клуж-Напока, 8-9 мая 2026\n🗣 Язык проведения: русский, украинский (с переводчиком)`;
         
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
         
         try {
             const response = await fetch(url, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID,
-                    text: message,
-                    parse_mode: 'HTML'
-                })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML' })
             });
             return response.ok;
         } catch (error) {
-            console.error('Ошибка отправки в Telegram:', error);
+            console.error('Ошибка:', error);
             return false;
         }
     }
 
-    // Отправка формы
     document.getElementById('registerForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -840,7 +1024,6 @@
         const phone = document.getElementById('phone').value.trim();
         const statusDiv = document.getElementById('formStatus');
         
-        // Валидация
         if (!name || !surname || !email || !phone) {
             statusDiv.style.display = 'block';
             statusDiv.className = 'loading-message error';
@@ -851,41 +1034,34 @@
             return;
         }
         
-        // Показываем статус "Отправка..."
         statusDiv.style.display = 'block';
         statusDiv.className = 'loading-message';
         if (currentLang === 'ru') statusDiv.innerText = 'Отправка заявки...';
         else if (currentLang === 'ro') statusDiv.innerText = 'Se trimite cererea...';
         else statusDiv.innerText = 'Submitting application...';
         
-        // Отправляем в Telegram
         const success = await sendToTelegram(name, surname, email, phone);
         
         if (success) {
             statusDiv.className = 'loading-message success';
-            if (currentLang === 'ru') statusDiv.innerText = '✅ Заявка успешно отправлена! Служба поддержки свяжется с вами.';
-            else if (currentLang === 'ro') statusDiv.innerText = '✅ Cererea a fost trimisă cu succes! Serviciul de asistență vă va contacta.';
-            else statusDiv.innerText = '✅ Application submitted successfully! Support service will contact you.';
+            if (currentLang === 'ru') statusDiv.innerText = '✅ Заявка успешно отправлена! Мы свяжемся с вами.';
+            else if (currentLang === 'ro') statusDiv.innerText = '✅ Cererea a fost trimisă cu succes! Vă vom contacta.';
+            else statusDiv.innerText = '✅ Application submitted successfully! We will contact you.';
             
-            // Очищаем форму
             this.reset();
-            
-            // Закрываем попап через 2 секунды
             setTimeout(() => {
                 popup.style.display = 'none';
                 statusDiv.style.display = 'none';
             }, 2500);
         } else {
             statusDiv.className = 'loading-message error';
-            if (currentLang === 'ru') statusDiv.innerText = '❌ Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь с нами по телефону.';
-            else if (currentLang === 'ro') statusDiv.innerText = '❌ Eroare la trimitere. Vă rugăm să încercați mai târziu sau să ne contactați telefonic.';
-            else statusDiv.innerText = '❌ Submission error. Please try again later or contact us by phone.';
-            
+            if (currentLang === 'ru') statusDiv.innerText = '❌ Ошибка. Попробуйте позже или свяжитесь по телефону.';
+            else if (currentLang === 'ro') statusDiv.innerText = '❌ Eroare. Încercați mai târziu sau contactați-ne telefonic.';
+            else statusDiv.innerText = '❌ Error. Try again later or contact us by phone.';
             setTimeout(() => { statusDiv.style.display = 'none'; }, 4000);
         }
     });
 
-    // Кнопка "Наверх"
     const scrollBtn = document.getElementById('scrollToTop');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) scrollBtn.classList.add('visible');
@@ -895,7 +1071,6 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Запускаем с английским языком
     updateLanguage('en');
 </script>
 </body>
