@@ -1,0 +1,764 @@
+
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Система Кадочникова - Тренинг Формула боя | Клуж 2026</title>
+    <style>
+        /* ========== RESET & GLOBAL ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', 'Roboto', 'Noto Sans', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Анимация появления контента */
+        .op3-designer-element--content {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        .header {
+            background: #000;
+            padding: 20px 0;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo img {
+            max-height: 60px;
+            width: auto;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            background: #b30808;
+            color: #fff;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-align: center;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #8a0606;
+            transform: scale(1.02);
+        }
+
+        .btn-large {
+            padding: 16px 40px;
+            font-size: 18px;
+        }
+
+        /* Секции */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-dark {
+            background: #0f0f0f;
+        }
+
+        .section-light {
+            background: #1a1a1a;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .col-2 {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Bullet list */
+        .bullet-list {
+            list-style: none;
+            margin-top: 15px;
+        }
+        .bullet-list li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .bullet-list li::before {
+            content: "✓";
+            color: #b30808;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Кнопка переключения языка */
+        .lang-switch {
+            display: flex;
+            gap: 10px;
+            background: #222;
+            padding: 5px 10px;
+            border-radius: 30px;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .lang-btn.active {
+            background: #b30808;
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+            }
+            .row {
+                flex-direction: column;
+            }
+            h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* Блок программы */
+        .program-card {
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .program-card h4 {
+            color: #b30808;
+            margin-bottom: 10px;
+        }
+
+        /* Footer - УПРОЩЕННЫЙ */
+        .footer {
+            background: #050505;
+            padding: 50px 0 30px;
+            border-top: 1px solid #222;
+        }
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-logo img {
+            max-height: 60px;
+        }
+        .footer-contacts {
+            text-align: right;
+        }
+        .footer-contacts p {
+            margin-bottom: 8px;
+        }
+        .footer-contacts a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .footer-contacts a:hover {
+            color: #b30808;
+        }
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #222;
+            padding-top: 30px;
+            font-size: 14px;
+        }
+        .footer-bottom a {
+            color: #aaa;
+            text-decoration: underline;
+        }
+
+        /* Popup */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .popup-content {
+            background: #1a1a1a;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            border-radius: 16px;
+            position: relative;
+        }
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 14px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            color: #fff;
+            border-radius: 6px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Кнопка "Наверх" */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #b30808;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 99;
+        }
+        .scroll-to-top.visible {
+            opacity: 1;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="op3-designer-element--content">
+    <!-- HEADER - только переключатель языков и кнопка Записаться -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <!-- КОММЕНТАРИЙ: ЛОГОТИП - замените URL на свой -->
+                <img src="https://kadochnikov.info/wp-content/uploads/2021/11/logotip-s-chernojnadpisyu.png" alt="Система Кадочникова">
+            </div>
+            <div class="header-actions">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="ru">РУС</button>
+                    <button class="lang-btn" data-lang="ro">RO</button>
+                </div>
+                <button class="btn scroll-to-form-btn" data-key="hero_btn">Записаться</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO секция -->
+    <!-- КОММЕНТАРИЙ: ФОНОВОЕ ИЗОБРАЖЕНИЕ ГЕРОЯ - замените URL на свой -->
+    <section class="section" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://kadochnikov.info/wp-content/uploads/2026/02/kad-bg-1.jpg'); background-size: cover; background-position: center;">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <p data-key="hero_date">Тренинг в Клуже, 10 апреля 2026 года.</p>
+                    <h1 style="font-size: 58px;"><span data-key="hero_title1">ФОРМУЛА</span> <span style="color: #b30808;" data-key="hero_title2">БОЯ</span></h1>
+                    <h3 data-key="hero_subtitle">Боевые алгоритмы Системы Кадочникова</h3>
+                    <p data-key="hero_desc">Получите навыки прикладного рукопашного боя и выживания в экстремальных ситуациях под руководством опытного инструктора на трехдневном тренинге-интенсиве</p>
+                    <button class="btn btn-large scroll-to-form-btn" data-key="hero_btn">Записаться на тренинг</button>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Что такое Система Кадочникова -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 data-key="what_title">Что такое Система Кадочникова?</h2>
+            <div class="row">
+                <div class="col-2">
+                    <p data-key="what_text1"><strong>Система Кадочникова — это уникальная авторская система русского боевого искусства,</strong> разработанная Алексеем Алексеевичем Кадочниковым и получившая дальнейшее развитие под руководством его сына, Аркадия Алексеевича.</p>
+                    <p data-key="what_text2">Это не набор приёмов, а целостная философия движения и система жизнеобеспечения, основанная на законах биомеханики, физики, геометрии, психофизиологии и других наук.</p>
+                    <p><strong data-key="what_sections">Система включает в себя следующие разделы:</strong></p>
+                    <ul class="bullet-list">
+                        <li data-key="list1">Нижняя акробатика и рациональное движение: основы выживания и мобильности.</li>
+                        <li data-key="list2">Прикладной рукопашный бой: эффективность как приоритет.</li>
+                        <li data-key="list3">Работа с оружием: точность и надежность через понимание механики, физики, геометрии.</li>
+                        <li data-key="list4">Психобиомеханика и стрессоустойчивость: управление собой в эмоционально нестабильной стрессовой обстановке.</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <!-- КОММЕНТАРИЙ: ФОТО А.А. КАДОЧНИКОВА - замените URL на свой -->
+                    <img class="img-fluid" src="https://kadochnikov.info/wp-content/uploads/2021/11/kad-o-9-1024x1024.jpg" alt="А.А. Кадочников">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Программа тренинга -->
+    <section class="section">
+        <div class="container">
+            <h2 data-key="program_title">Программа тренинга</h2>
+            <div class="program-card">
+                <h4 data-key="topic1_title">ТЕМА 1</h4>
+                <p data-key="topic1_desc">Подготовка тела. Работа на плоскости пола. Стойка и передвижения. Специально-подготовительные упражнения нижней акробатики: кувырки, падения, перекаты. Снятие страха и напряжения. Формирование базовых двигательных навыков — фундамент всей Системы.</p>
+            </div>
+            <div class="program-card">
+                <h4 data-key="topic2_title">ТЕМА 2</h4>
+                <p data-key="topic2_desc">Выведение из равновесия. Контакт с противником. Зоны контакта. Воздействие без грубой физической силы. Как лишить противника устойчивости оптимальными усилиями.</p>
+            </div>
+            <div class="program-card">
+                <h4 data-key="topic3_title">ТЕМА 3</h4>
+                <p data-key="topic3_desc">Освобождение от захватов. Противодействие физическому воздействию в захватах. Базовые навыки, которые позволят использовать силу противника против него самого.</p>
+            </div>
+            <div class="program-card">
+                <h4 data-key="topic4_title">ТЕМА 4</h4>
+                <p data-key="topic4_desc">Защита от ударов. Принципы построения защиты от ударов. Использование теоретических форм физики, механики, геометрии для построения встречи удара. Рассмотрение психофизических процессов.</p>
+            </div>
+            <div class="program-card">
+                <h4 data-key="topic5_title">ТЕМА 5</h4>
+                <p data-key="topic5_desc">Работа с предметами и оружием. Формирование встречи ударов предметами. Базовые навыки построения встречи. Использование теоретических форм физики, механики, геометрии и возможностей биомеханических форм тела.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Видеоотчет -->
+    <section class="section section-dark">
+        <div class="container" style="text-align: center;">
+            <!-- КОММЕНТАРИЙ: ВИДЕО 1 (отчет с тренинга) - замените src на ссылку вашего видео (YouTube, Vimeo, Kinescope) -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 30px;">
+                <iframe style="position: absolute; top:0; left:0; width:100%; height:100%;" src="https://kinescope.io/embed/hPFB2c1rzsVpakFc5T2yfH" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p data-key="video_caption">Видеоотчет одного из тренингов по Системе Кадочникова в Краснодаре</p>
+            <button class="btn scroll-to-form-btn" data-key="hero_btn">Записаться на тренинг</button>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="section">
+        <div class="container">
+            <h2 data-key="benefits_title">Преимущества занятий Системой Кадочникова</h2>
+            <div class="row">
+                <div class="col-2">
+                    <h3 data-key="benefit1">Физическое развитие</h3>
+                    <ul class="bullet-list">
+                        <li data-key="phys1">Развитие ловкости</li>
+                        <li data-key="phys2">Развитие гибкости и силы</li>
+                        <li data-key="phys3">Повышение выносливости</li>
+                        <li data-key="phys4">Укрепление мышечного корсета</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h3 data-key="benefit2">Духовное развитие</h3>
+                    <ul class="bullet-list">
+                        <li data-key="spirit1">Самодисциплина</li>
+                        <li data-key="spirit2">Преодоление страха и тревожности</li>
+                        <li data-key="spirit3">Формирование волевого ресурса</li>
+                        <li data-key="spirit4">Опора на собственные силы</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <h3 data-key="benefit3">Интеллектуальное развитие</h3>
+                    <ul class="bullet-list">
+                        <li data-key="intel1">Пространственное мышление</li>
+                        <li data-key="intel2">Аналитические способности</li>
+                        <li data-key="intel3">Скорость мышления и прогнозирование</li>
+                        <li data-key="intel4">Развитие сознания и внимания</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Инструктор -->
+    <section class="section section-dark">
+        <div class="container">
+            <h2 data-key="instructor_title">Инструктор тренинга и руководитель Центра СК</h2>
+            <div class="row">
+                <div class="col-2">
+                    <!-- КОММЕНТАРИЙ: ФОТО АРКАДИЯ КАДОЧНИКОВА - замените URL на свой -->
+                    <img class="img-fluid" src="https://kadochnikov.info/wp-content/uploads/2026/02/dsc-1797-scaled.png" alt="Аркадий Кадочников">
+                </div>
+                <div class="col-2">
+                    <h3 data-key="instructor_name">Аркадий Алексеевич Кадочников</h3>
+                    <ul class="bullet-list">
+                        <li data-key="inst1"><strong>Военный профессионал (подполковник запаса).</strong> С 1994 г. проходил военную службу в воинской части 62986 в качестве заместителя командира группы специальных операций.</li>
+                        <li data-key="inst2"><strong>Член-корреспондент Петровской академии наук и искусств.</strong></li>
+                        <li data-key="inst3"><strong>Офицер, патриот России,</strong> вместе с Алексеем Алексеевичем Кадочниковым внес большой вклад в развитие системы личной техники безопасности.</li>
+                    </ul>
+                    <!-- КОММЕНТАРИЙ: ВИДЕО 2 (интервью) - замените src на ссылку вашего видео -->
+                    <div style="margin-top: 30px; position: relative; padding-bottom: 75%; height: 0;">
+                        <iframe style="position: absolute; top:0; left:0; width:100%; height:100%;" src="https://player.vimeo.com/video/1132410722" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Расписание и место -->
+    <section class="section">
+        <div class="container">
+            <h2 data-key="schedule_title">Расписание занятий и место проведения</h2>
+            <div class="row">
+                <div class="col-2">
+                    <ul class="bullet-list">
+                        <li data-key="address"><strong>Адрес проведения тренинга:</strong> г. Клуж-Напока</li>
+                        <li data-key="travel2"><i>Прямо в центре!</i></li>
+                        <li data-key="schedule_dates"><strong>Расписание тренинга:</strong><br>• 24 апреля - 08:00 - 13:00<br>• 25 апреля - 08:00 - 13:00<br>• 26 апреля - 08:00 - 13:00</li>
+                    </ul>
+                </div>
+                <div class="col-2">
+                    <!-- КОММЕНТАРИЙ: КАРТА - сейчас Яндекс. Чтобы заменить на Google Maps:
+                         1. Перейдите на Google Maps, найдите нужное место
+                         2. Нажмите "Поделиться" → "Встроить карту"
+                         3. Скопируйте весь iframe код и вставьте ВМЕСТО текущего iframe -->
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Afa746ae79e2a1054436836b5aee6a867ea1b133bba48ebcba2e84e7530ea58d7&amp;source=constructor" width="100%" height="360" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФОРМА РЕГИСТРАЦИИ (сюда скроллит кнопка) -->
+    <section class="section section-dark" id="register-section">
+        <div class="container" style="max-width: 700px; text-align: center;">
+            <h2 data-key="form_title">Форма Регистрации</h2>
+            <p data-key="form_subtitle">3-дневный тренинг-интенсив «Формула боя. Боевые алгоритмы Системы Кадочникова»</p>
+            <!-- КОММЕНТАРИЙ: ЦЕНА - измените число 30000 на нужное -->
+            <p><strong data-key="form_price">Стоимость участия: 30 000 рублей</strong></p>
+            <button class="btn btn-large open-popup-btn" style="margin-top: 20px;" data-key="form_btn">ЗАРЕГИСТРИРОВАТЬСЯ НА ТРЕНИНГ</button>
+            <p style="margin-top: 20px; font-size: 14px;" data-key="form_note">Для участия в тренинге необходимо заполнить форму и зарегистрироваться. Нажмите кнопку выше, заполните форму и служба поддержки свяжется с вами для подтверждения участия.</p>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ (УПРОЩЕННЫЙ: только лого, телефон, email, WhatsApp, копирайт) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <!-- КОММЕНТАРИЙ: ЛОГОТИП В ПОДВАЛЕ - замените URL на свой -->
+                    <img src="https://kadochnikov.info/wp-content/uploads/2021/11/logotip-s-belojnadpisyu.png" alt="Система Кадочникова" style="max-height: 60px;">
+                </div>
+                <div class="footer-contacts">
+                    <!-- КОММЕНТАРИЙ: ТЕЛЕФОН, EMAIL, WHATSAPP - измените номера и адреса -->
+                    <p><strong>Бесплатный телефон:</strong> <a href="tel:88005000958">8-800-500-09-58</a></p>
+                    <p><strong>E-mail:</strong> <a href="mailto:support@neoglory.ru">support@neoglory.ru</a></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/79284117604">+7 (928) 411-76-04</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© Издательство Неоглори. Официальный издатель Системы Кадочникова. Все права защищены.</p>
+                <p style="margin-top: 10px;">
+                    <a href="https://neoglory.ru/documents1/" target="_blank">Политика обработки персональных данных</a> | 
+                    <a href="https://neoglory.ru/documents4/" target="_blank">Оферта</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<!-- POPUP (всплывающая форма) -->
+<div id="popupForm" class="popup-overlay">
+    <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <h3 data-key="popup_title">Регистрация на тренинг</h3>
+        <p data-key="popup_desc">Заполните форму и мы выставим счет для оплаты участия</p>
+        <form id="registerForm">
+            <div class="form-group">
+                <label data-key="popup_name">Имя *</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label data-key="popup_surname">Фамилия *</label>
+                <input type="text" id="surname" required>
+            </div>
+            <div class="form-group">
+                <label data-key="popup_email">Email *</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label data-key="popup_phone">Телефон *</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <button type="submit" class="btn" style="width:100%" data-key="popup_submit">Отправить Заявку</button>
+        </form>
+    </div>
+</div>
+
+<!-- Кнопка "Наверх" -->
+<div class="scroll-to-top" id="scrollToTop">↑</div>
+
+<script>
+    // ========== ПЕРЕВОД НА РУМЫНСКИЙ ==========
+    const translations = {
+        ru: {
+            hero_date: "Тренинг в Клуж-Напока 10 апреля 2026 г.",
+            hero_title1: "ФОРМУЛА",
+            hero_title2: "БОЯ",
+            hero_subtitle: "Боевые алгоритмы Системы Кадочникова",
+            hero_desc: "Получите навыки прикладного рукопашного боя и выживания в экстремальных ситуациях под руководством опытного инструктора на трехдневном тренинге-интенсиве",
+            hero_btn: "Записаться на тренинг",
+            what_title: "Что такое Система Кадочникова?",
+            what_text1: "Система Кадочникова — это уникальная авторская система русского боевого искусства, разработанная Алексеем Алексеевичем Кадочниковым и получившая дальнейшее развитие под руководством его сына, Аркадия Алексеевича.",
+            what_text2: "Это не набор приёмов, а целостная философия движения и система жизнеобеспечения, основанная на законах биомеханики, физики, геометрии, психофизиологии и других наук.",
+            what_sections: "Система включает в себя следующие разделы:",
+            list1: "Нижняя акробатика и рациональное движение: основы выживания и мобильности.",
+            list2: "Прикладной рукопашный бой: эффективность как приоритет.",
+            list3: "Работа с оружием: точность и надежность через понимание механики, физики, геометрии.",
+            list4: "Психобиомеханика и стрессоустойчивость: управление собой в эмоционально нестабильной стрессовой обстановке.",
+            program_title: "Программа тренинга",
+            topic1_title: "ТЕМА 1",
+            topic1_desc: "Подготовка тела. Работа на плоскости пола. Стойка и передвижения. Специально-подготовительные упражнения нижней акробатики: кувырки, падения, перекаты. Снятие страха и напряжения. Формирование базовых двигательных навыков — фундамент всей Системы.",
+            topic2_title: "ТЕМА 2",
+            topic2_desc: "Выведение из равновесия. Контакт с противником. Зоны контакта. Воздействие без грубой физической силы. Как лишить противника устойчивости оптимальными усилиями.",
+            topic3_title: "ТЕМА 3",
+            topic3_desc: "Освобождение от захватов. Противодействие физическому воздействию в захватах. Базовые навыки, которые позволят использовать силу противника против него самого.",
+            topic4_title: "ТЕМА 4",
+            topic4_desc: "Защита от ударов. Принципы построения защиты от ударов. Использование теоретических форм физики, механики, геометрии для построения встречи удара. Рассмотрение психофизических процессов.",
+            topic5_title: "ТЕМА 5",
+            topic5_desc: "Работа с предметами и оружием. Формирование встречи ударов предметами. Базовые навыки построения встречи. Использование теоретических форм физики, механики, геометрии и возможностей биомеханических форм тела.",
+            video_caption: "Видеоотчет одного из тренингов по Системе Кадочникова в Краснодаре",
+            benefits_title: "Преимущества занятий Системой Кадочникова",
+            benefit1: "Физическое развитие",
+            benefit2: "Духовное развитие",
+            benefit3: "Интеллектуальное развитие",
+            phys1: "Развитие ловкости",
+            phys2: "Развитие гибкости и силы",
+            phys3: "Повышение выносливости",
+            phys4: "Укрепление мышечного корсета",
+            spirit1: "Самодисциплина",
+            spirit2: "Преодоление страха и тревожности",
+            spirit3: "Формирование волевого ресурса",
+            spirit4: "Опора на собственные силы",
+            intel1: "Пространственное мышление",
+            intel2: "Аналитические способности",
+            intel3: "Скорость мышления и прогнозирование",
+            intel4: "Развитие сознания и внимания",
+            instructor_title: "Инструктор тренинга и руководитель Центра СК",
+            instructor_name: "Аркадий Алексеевич Кадочников",
+            inst1: "Военный профессионал (подполковник запаса). С 1994 г. проходил военную службу в воинской части 62986 в качестве заместителя командира группы специальных операций. Занимался подготовкой переменного состава и выполнением боевых задач. В 2002 году уволился в запас. Имеет опыт преподавания с 1986 года.",
+            inst2: "Член-корреспондент Петровской академии наук и искусств.",
+            inst3: "Офицер, патриот России, вместе с Алексеем Алексеевичем Кадочниковым внес большой вклад в развитие системы личной техники безопасности человека в экстремальных условиях и профессионально-прикладных аспектов рукопашного боя. Продолжает дело отца.",
+            schedule_title: "Расписание занятий и место проведения",
+            address: "Адрес проведения тренинга: г. Клуж-Напока",
+            travel2: "Прямо в центре!",
+            schedule_dates: "Расписание тренинга:\n• 24 апреля - 08:00 - 13:00\n• 25 апреля - 08:00 - 13:00\n• 26 апреля - 08:00 - 13:00",
+            form_title: "Форма Регистрации",
+            form_subtitle: "3-дневный тренинг-интенсив «Формула боя. Боевые алгоритмы Системы Кадочникова»",
+            form_price: "Стоимость участия: ХХХ лей",
+            form_btn: "ЗАРЕГИСТРИРОВАТЬСЯ НА ТРЕНИНГ",
+            form_note: "Для участия в тренинге необходимо заполнить форму и зарегистрироваться. Нажмите кнопку выше, заполните форму и служба поддержки свяжется с вами для подтверждения участия.",
+            popup_title: "Регистрация на тренинг",
+            popup_desc: "Заполните форму и мы выставим счет для оплаты участия",
+            popup_name: "Имя *",
+            popup_surname: "Фамилия *",
+            popup_email: "Email *",
+            popup_phone: "Телефон *",
+            popup_submit: "Отправить Заявку"
+        },
+        ro: {
+            hero_date: "Antrenament la Cluj-Napoka 10 aprilie 2026",
+            hero_title1: "FORMULA",
+            hero_title2: "LUPtei",
+            hero_subtitle: "Algoritmi de luptă ai Sistemului Kadochnikov",
+            hero_desc: "Obțineți abilități de luptă corporală aplicată și supraviețuire în situații extreme sub îndrumarea unui instructor experimentat la un antrenament intensiv de trei zile",
+            hero_btn: "Înscrie-te la antrenament",
+            what_title: "Ce este Sistemul Kadochnikov?",
+            what_text1: "Sistemul Kadochnikov este un sistem unic de arte marțiale rusești, dezvoltat de Alexei Kadochnikov și dezvoltat în continuare sub conducerea fiului său, Arkadi Kadochnikov.",
+            what_text2: "Nu este un set de tehnici, ci o filozofie holistică a mișcării și un sistem de susținere a vieții bazat pe legile biomecanicii, fizicii, geometriei, psihofiziologiei și altor științe.",
+            what_sections: "Sistemul include următoarele secțiuni:",
+            list1: "Acrobatică joasă și mișcare rațională: bazele supraviețuirii și mobilității.",
+            list2: "Luptă corporală aplicată: eficiența ca prioritate.",
+            list3: "Lucrul cu armele: precizie și fiabilitate prin înțelegerea mecanicii, fizicii, geometriei.",
+            list4: "Psihobiomecanică și rezistență la stres: controlul sinelui în situații emoțional instabile.",
+            program_title: "Programul antrenamentului",
+            topic1_title: "TEMA 1",
+            topic1_desc: "Pregătirea corpului. Lucrul pe planșeu. Poziție și mișcări. Exerciții pregătitoare speciale de acrobatică joasă: tumba, căderi, rostogoliri. Eliminarea fricii și tensiunii. Formarea abilităților motorii de bază - fundația întregului Sistem.",
+            topic2_title: "TEMA 2",
+            topic2_desc: "Dezechilibrarea. Contactul cu adversarul. Zonele de contact. Acțiune fără forță fizică brută. Cum să privați adversarul de stabilitate cu eforturi optime.",
+            topic3_title: "TEMA 3",
+            topic3_desc: "Eliberarea din prize. Contracararea acțiunii fizice în prize. Abilități de bază care vă permit să folosiți forța adversarului împotriva lui.",
+            topic4_title: "TEMA 4",
+            topic4_desc: "Protecția împotriva loviturilor. Principii de construire a protecției împotriva loviturilor. Utilizarea formelor teoretice ale fizicii, mecanicii, geometriei pentru a întâmpina lovitura.",
+            topic5_title: "TEMA 5",
+            topic5_desc: "Lucrul cu obiecte și arme. Formarea întâmpinării loviturilor cu obiecte. Abilități de bază.",
+            video_caption: "Reportaj video de la unul dintre antrenamentele Sistemului Kadochnikov din Krasnodar",
+            benefits_title: "Avantajele practicării Sistemului Kadochnikov",
+            benefit1: "Dezvoltare fizică",
+            benefit2: "Dezvoltare spirituală",
+            benefit3: "Dezvoltare intelectuală",
+            phys1: "Dezvoltarea agilității",
+            phys2: "Dezvoltarea flexibilității și forței",
+            phys3: "Creșterea rezistenței",
+            phys4: "Întărirea corsetului muscular",
+            spirit1: "Autodisciplină",
+            spirit2: "Depășirea fricii și anxietății",
+            spirit3: "Formarea resursei volitive",
+            spirit4: "Bazat pe propriile forțe",
+            intel1: "Gândire spațială",
+            intel2: "Abilități analitice",
+            intel3: "Viteza de gândire și prognozare",
+            intel4: "Dezvoltarea conștiinței și atenției",
+            instructor_title: "Instructorul antrenamentului și șeful Centrului SK",
+            instructor_name: "Arkadiy Alexeevici Kadochnikov",
+            inst1: "Profesionist militar (locotenent-colonel în rezervă). Din 1994 a servit în unitatea militară 62986 ca adjunct al comandantului grupului de operațiuni speciale. Are experiență în predare din 1986.",
+            inst2: "Membru-corespondent al Academiei Petrovsky de Științe și Arte.",
+            inst3: "Ofițer, patriot al Rusiei, împreună cu Alexei Kadochnikov a adus o mare contribuție la dezvoltarea sistemului de siguranță personală și aspectelor aplicate ale luptei corp la corp. Continuă munca tatălui său.",
+            schedule_title: "Orarul și locul desfășurării",
+            address: "Adresa: or. Cluj-Napoca",
+            travel2: "Centr!",
+            schedule_dates: "Orar antrenament:\n• 24 aprilie - 08:00 - 13:00\n• 25 aprilie - 08:00 - 13:00\n• 26 aprilie - 08:00 - 13:00",
+            form_title: "Formular de înregistrare",
+            form_subtitle: "Antrenament intensiv de 3 zile „Formula luptei. Algoritmi de luptă ai Sistemului Kadochnikov”",
+            form_price: "Costul participării: XXX de lei",
+            form_btn: "ÎNREGISTREAZĂ-TE LA ANTRENAMENT",
+            form_note: "Pentru a participa la antrenament, completați formularul și vă vom contacta pentru confirmare.",
+            popup_title: "Înregistrare la antrenament",
+            popup_desc: "Completați formularul și vă vom trimite factura",
+            popup_name: "Prenume *",
+            popup_surname: "Nume de familie *",
+            popup_email: "Email *",
+            popup_phone: "Telefon *",
+            popup_submit: "Trimite cererea"
+        }
+    };
+
+    let currentLang = 'ru';
+    function updateLanguage(lang) {
+        currentLang = lang;
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (translations[lang][key]) {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = translations[lang][key];
+                } else {
+                    el.innerText = translations[lang][key];
+                }
+            }
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => updateLanguage(btn.getAttribute('data-lang')));
+    });
+
+    // Плавный скролл к форме
+    document.querySelectorAll('.scroll-to-form-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('register-section').scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // POPUP
+    const popup = document.getElementById('popupForm');
+    const openBtns = document.querySelectorAll('.open-popup-btn');
+    const closeBtn = document.querySelector('.close-popup');
+    openBtns.forEach(btn => btn.addEventListener('click', () => popup.style.display = 'flex'));
+    closeBtn.addEventListener('click', () => popup.style.display = 'none');
+    window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
+
+    // Отправка формы
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert(translations[currentLang].popup_submit + "! " + (currentLang === 'ru' ? "Служба поддержки свяжется с вами в ближайшее время." : "Serviciul de asistență vă va contacta în curând."));
+        popup.style.display = 'none';
+        this.reset();
+    });
+
+    // Кнопка "Наверх"
+    const scrollBtn = document.getElementById('scrollToTop');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) scrollBtn.classList.add('visible');
+        else scrollBtn.classList.remove('visible');
+    });
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    updateLanguage('ru');
+</script>
+</body>
+</html>
+```
