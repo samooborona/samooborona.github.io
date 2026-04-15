@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Combat Code | Nikola En | Cluj 2026</title>
     <style>
-        /* ========== RESET & GLOBAL ========== */
         * {
             margin: 0;
             padding: 0;
@@ -39,7 +38,6 @@
             padding: 0 20px;
         }
 
-        /* Шапка */
         .header {
             background: #000;
             padding: 20px 0;
@@ -150,7 +148,6 @@
             font-size: 18px;
         }
 
-        /* Ценовой блок */
         .pricing-box {
             background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
             border: 2px solid #b30808;
@@ -473,6 +470,21 @@
             border: 1px solid #b30808;
             margin-top: 20px;
         }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: 12px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -577,14 +589,25 @@
                     <div class="price" data-key="extra_price">+300 lei</div>
                     <div data-key="extra_desc">Индивидуальная консультация + занятие для двух человек (1.5 часа) 15 и 16 мая</div>
                 </div>
-                <div class="hours-info" data-key="hours_info">⏰ Всего 6 часов: 15 мая (16:00-21:00) и 16 мая (09:00-14:00) ⏰</div>
+                <div class="hours-info" data-key="hours_info">⏰ Всего 10 часов: 15 мая (16:00-21:00) и 16 мая (09:00-14:00) ⏰</div>
                 <button class="btn book-btn scroll-to-form-btn" data-key="book_btn">🏃 ЗАБРОНИРОВАТЬ МЕСТО 🏃</button>
             </div>
         </div>
     </section>
 
-    <!-- Преимущества -->
+    <!-- ВИДЕОБЛОК (возвращен) -->
     <section class="section">
+        <div class="container" style="text-align: center;">
+            <div class="video-container">
+                <iframe src="https://kinescope.io/embed/hPFB2c1rzsVpakFc5T2yfH" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p data-key="video_caption">Video report of one of the trainings on the Kadochnikov System</p>
+            <button class="btn scroll-to-form-btn" data-key="hero_btn">Sign up for training</button>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="section section-dark">
         <div class="container">
             <h2 data-key="benefits_title">Advantages of practicing the Kadochnikov System</h2>
             <div class="row">
@@ -620,7 +643,7 @@
     </section>
 
     <!-- Инструктор - Nikola En с фото -->
-    <section class="section section-dark">
+    <section class="section">
         <div class="container">
             <h2 data-key="instructor_title">Training Instructor</h2>
             <div class="instructor-card">
@@ -643,7 +666,7 @@
     </section>
 
     <!-- Расписание и место -->
-    <section class="section">
+    <section class="section section-dark">
         <div class="container">
             <h2 data-key="schedule_title">Schedule and venue</h2>
             <div class="row">
@@ -653,7 +676,7 @@
                         <li data-key="travel2"><i>Right in the center!</i></li>
                     </ul>
                     <div class="schedule-time">
-                        <h3 data-key="schedule_title">📅 Schedule:</h3>
+                        <h3 data-key="schedule_subtitle">📅 Schedule:</h3>
                         <p data-key="schedule_day1"><strong>May 15:</strong> 16:00 - 21:00 (5 hours)</p>
                         <p data-key="schedule_day2"><strong>May 16:</strong> 09:00 - 14:00 (5 hours)</p>
                         <p data-key="schedule_total"><strong>Total: 10 hours</strong></p>
@@ -669,7 +692,7 @@
     </section>
 
     <!-- ФОРМА РЕГИСТРАЦИИ -->
-    <section class="section section-dark" id="register-section">
+    <section class="section" id="register-section">
         <div class="container" style="max-width: 700px; text-align: center;">
             <h2 data-key="form_title">Registration Form</h2>
             <p data-key="form_subtitle">2-day intensive training "Combat Code: Body and Situation Control"</p>
@@ -733,10 +756,10 @@
 <div class="scroll-to-top" id="scrollToTop">↑</div>
 
 <script>
-    // ========== НАСТРОЙКИ TELEGRAM БОТА ==========
+    // ========== НАСТРОЙКИ TELEGRAM БОТА (ВАШИ ДАННЫЕ) ==========
     const BOT_TOKEN = '8720019189:AAHMyG-vR2bg-hA_RGv8QAxLH0CvfEGFuVI';
     const CHAT_ID = '8587891595';
-    // ============================================
+    // ===========================================================
 
     const translations = {
         ru: {
@@ -763,6 +786,7 @@
             topic3_desc: "Освобождение от захватов. Противодействие физическому воздействию в захватах. Базовые навыки, которые позволят использовать силу противника против него самого.",
             topic4_title: "ТЕМА 4",
             topic4_desc: "Защита от ударов. Принципы построения защиты от ударов. Использование теоретических форм физики, механики, геометрии для построения встречи удара. Рассмотрение психофизических процессов.",
+            video_caption: "Видеоотчет одного из тренингов по Системе Кадочникова",
             benefits_title: "Преимущества занятий Системой Кадочникова",
             benefit1: "Физическое развитие",
             benefit2: "Духовное развитие",
@@ -787,6 +811,7 @@
             inst4: "Коуч, регрессолог, исследователь возможностей человека",
             inst5: "Основатель детской онлайн школы. Миссия школы - раскрыть внутренний потенциал детей и объединять семьи во всем мире",
             schedule_title: "Расписание и место проведения",
+            schedule_subtitle: "📅 Расписание:",
             address: "Адрес проведения тренинга: г. Клуж-Напока, Румыния",
             travel2: "Прямо в центре!",
             schedule_day1: "<strong>15 мая:</strong> 16:00 - 21:00 (5 часов)",
@@ -843,6 +868,7 @@
             topic3_desc: "Eliberarea din prize. Contracararea acțiunii fizice în prize.",
             topic4_title: "TEMA 4",
             topic4_desc: "Protecția împotriva loviturilor. Principii de construire a protecției împotriva loviturilor.",
+            video_caption: "Reportaj video de la unul dintre antrenamentele Sistemului Kadochnikov",
             benefits_title: "Avantajele practicării Sistemului Kadochnikov",
             benefit1: "Dezvoltare fizică",
             benefit2: "Dezvoltare spirituală",
@@ -867,6 +893,7 @@
             inst4: "Coach, regresolog, cercetător al potențialului uman",
             inst5: "Fondator al școlii online pentru copii. Misiunea școlii - de a dezvălui potențialul interior al copiilor și de a uni familiile din întreaga lume",
             schedule_title: "Orarul și locul desfășurării",
+            schedule_subtitle: "📅 Orar:",
             address: "Adresa: Cluj-Napoca, Romania",
             travel2: "Centru!",
             schedule_day1: "<strong>15 mai:</strong> 16:00 - 21:00 (5 ore)",
@@ -923,6 +950,7 @@
             topic3_desc: "Release from grabs. Countering physical impact in grabs. Basic skills that allow you to use the opponent's force against him.",
             topic4_title: "TOPIC 4",
             topic4_desc: "Protection against strikes. Principles of building protection against strikes. Using theoretical forms of physics, mechanics, geometry to meet the strike. Consideration of psychophysical processes.",
+            video_caption: "Video report of one of the trainings on the Kadochnikov System",
             benefits_title: "Advantages of practicing the Kadochnikov System",
             benefit1: "Physical development",
             benefit2: "Spiritual development",
@@ -947,6 +975,7 @@
             inst4: "Coach, regressologist, researcher of human potential",
             inst5: "Founder of an online children's school. The school's mission is to unlock the inner potential of children and unite families around the world",
             schedule_title: "Schedule and venue",
+            schedule_subtitle: "📅 Schedule:",
             address: "Training address: Cluj-Napoca, Romania",
             travel2: "Right in the center!",
             schedule_day1: "<strong>May 15:</strong> 16:00 - 21:00 (5 hours)",
