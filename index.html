@@ -286,6 +286,10 @@
                 font-size: 18px;
                 padding: 14px 30px;
             }
+            .photo-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         .program-card {
@@ -379,6 +383,16 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
+        }
+        .form-group .optional-note {
+            font-size: 12px;
+            color: #aaa;
+            font-weight: normal;
+        }
+        .phone-note {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
         }
         .language-info {
             background: rgba(179, 8, 8, 0.2);
@@ -485,6 +499,35 @@
             width: 100%;
             height: 100%;
         }
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .gallery-item {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+        .gallery-img {
+            width: 100%;
+            max-width: 300px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 2px solid #b30808;
+            transition: transform 0.3s;
+        }
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+        .gallery-caption {
+            margin-top: 10px;
+            color: #aaa;
+            font-size: 14px;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -512,7 +555,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <p data-key="hero_date">Training in Cluj-Napoca, May 15-16, 2026</p>
+                    <p data-key="hero_date">Training in Cluj-Napoca, June 26-27, 2026</p>
                     <h1 style="font-size: 58px;"><span data-key="hero_title1">COMBAT</span> <span style="color: #b30808;" data-key="hero_title2">CODE</span></h1>
                     <h3 data-key="hero_subtitle">Body and Situation Control</h3>
                     <p data-key="hero_desc">Gain applied hand-to-hand combat and survival skills in extreme situations under the guidance of an experienced instructor at a two-day intensive training</p>
@@ -587,15 +630,15 @@
                 </div>
                 <div class="extra-offer">
                     <div class="price" data-key="extra_price">+300 lei</div>
-                    <div data-key="extra_desc">Индивидуальная консультация + занятие для двух человек (1.5 часа) 15 и 16 мая</div>
+                    <div data-key="extra_desc">Индивидуальная консультация + занятие для двух человек (1.5 часа) 26 и 27 июня</div>
                 </div>
-                <div class="hours-info" data-key="hours_info">⏰ Всего 10 часов: 15 мая (16:00-21:00) и 16 мая (09:00-14:00) ⏰</div>
+                <div class="hours-info" data-key="hours_info">⏰ Всего 12 часов: 26 июня (6 часов) и 27 июня (6 часов) ⏰</div>
                 <button class="btn book-btn scroll-to-form-btn" data-key="book_btn">🏃 ЗАБРОНИРОВАТЬ МЕСТО 🏃</button>
             </div>
         </div>
     </section>
 
-    <!-- ВИДЕОБЛОК (возвращен) -->
+    <!-- ВИДЕОБЛОК -->
     <section class="section">
         <div class="container" style="text-align: center;">
             <div class="video-container">
@@ -606,7 +649,7 @@
         </div>
     </section>
 
-    <!-- Преимущества -->
+    <!-- Преимущества + ГАЛЕРЕЯ ФОТО -->
     <section class="section section-dark">
         <div class="container">
             <h2 data-key="benefits_title">Advantages of practicing the Kadochnikov System</h2>
@@ -639,6 +682,26 @@
                     </ul>
                 </div>
             </div>
+
+            <!-- ГАЛЕРЕЯ ФОТО - 3 ФОТО -->
+            <!-- КОММЕНТАРИЙ: КАК ЗАГРУЗИТЬ ФОТО:
+                 1. Положите 3 ваших фото в ту же папку, что и HTML файл
+                 2. Назовите их: photo1.jpg, photo2.jpg, photo3.jpg
+                 3. ИЛИ замените ссылки ниже на прямые ссылки ваших фото -->
+            <div class="photo-gallery">
+                <div class="gallery-item">
+                    <img class="gallery-img" src="photo1.jpg" alt="Training photo 1" onerror="this.src='https://via.placeholder.com/300x250?text=Photo+1'">
+                    <div class="gallery-caption" data-key="gallery1">Моменты с тренировок</div>
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="photo2.jpg" alt="Training photo 2" onerror="this.src='https://via.placeholder.com/300x250?text=Photo+2'">
+                    <div class="gallery-caption" data-key="gallery2">Практика и отработка</div>
+                </div>
+                <div class="gallery-item">
+                    <img class="gallery-img" src="photo3.jpg" alt="Training photo 3" onerror="this.src='https://via.placeholder.com/300x250?text=Photo+3'">
+                    <div class="gallery-caption" data-key="gallery3">Атмосфера тренинга</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -647,11 +710,6 @@
         <div class="container">
             <h2 data-key="instructor_title">Training Instructor</h2>
             <div class="instructor-card">
-                <!-- КОММЕНТАРИЙ: КАК ЗАГРУЗИТЬ ФОТО:
-                     1. Положите файл фото в ту же папку, что и этот HTML файл
-                     2. Назовите файл "nikola-en.jpg"
-                     3. ИЛИ загрузите на GitHub и вставьте ссылку вместо "nikola-en.jpg"
-                -->
                 <img id="instructorPhoto" class="instructor-photo" src="nikola-en.jpg" alt="Nikola En" onerror="this.src='https://via.placeholder.com/200x200?text=Photo'">
                 <div class="instructor-name" data-key="instructor_name">Nikola En</div>
                 <ul class="instructor-list">
@@ -677,9 +735,9 @@
                     </ul>
                     <div class="schedule-time">
                         <h3 data-key="schedule_subtitle">📅 Schedule:</h3>
-                        <p data-key="schedule_day1"><strong>May 15:</strong> 16:00 - 21:00 (5 hours)</p>
-                        <p data-key="schedule_day2"><strong>May 16:</strong> 09:00 - 14:00 (5 hours)</p>
-                        <p data-key="schedule_total"><strong>Total: 10 hours</strong></p>
+                        <p data-key="schedule_day1"><strong>June 26:</strong> 6 hours</p>
+                        <p data-key="schedule_day2"><strong>June 27:</strong> 6 hours</p>
+                        <p data-key="schedule_total"><strong>Total: 12 hours</strong></p>
                     </div>
                 </div>
                 <div class="col-2">
@@ -736,16 +794,17 @@
                 <input type="text" id="name" required>
             </div>
             <div class="form-group">
-                <label data-key="popup_surname">Last name *</label>
-                <input type="text" id="surname" required>
+                <label data-key="popup_surname">Last name <span class="optional-note">(optional)</span></label>
+                <input type="text" id="surname">
             </div>
             <div class="form-group">
                 <label data-key="popup_email">Email *</label>
                 <input type="email" id="email" required>
             </div>
             <div class="form-group">
-                <label data-key="popup_phone">Phone *</label>
+                <label data-key="popup_phone">Phone (WhatsApp / Telegram) *</label>
                 <input type="tel" id="phone" required>
+                <div class="phone-note" data-key="phone_note">📱 Please enter your phone number with country code for WhatsApp/Telegram contact</div>
             </div>
             <button type="submit" class="btn" style="width:100%" data-key="popup_submit">Submit Application</button>
             <div id="formStatus" class="loading-message" style="display: none;"></div>
@@ -764,7 +823,7 @@
     const translations = {
         ru: {
             logo: "КОД БОЯ",
-            hero_date: "Тренинг в Клуж-Напока 15-16 мая 2026 г.",
+            hero_date: "Тренинг в Клуж-Напока 26-27 июня 2026 г.",
             hero_title1: "КОД",
             hero_title2: "БОЯ",
             hero_subtitle: "Управление телом и ситуацией",
@@ -814,9 +873,9 @@
             schedule_subtitle: "📅 Расписание:",
             address: "Адрес проведения тренинга: г. Клуж-Напока, Румыния",
             travel2: "Прямо в центре!",
-            schedule_day1: "<strong>15 мая:</strong> 16:00 - 21:00 (5 часов)",
-            schedule_day2: "<strong>16 мая:</strong> 09:00 - 14:00 (5 часов)",
-            schedule_total: "<strong>Всего: 10 часов</strong>",
+            schedule_day1: "<strong>26 июня:</strong> 6 часов",
+            schedule_day2: "<strong>27 июня:</strong> 6 часов",
+            schedule_total: "<strong>Всего: 12 часов</strong>",
             location_note: "📍 Точный адрес будет отправлен после регистрации",
             form_title: "Форма Регистрации",
             form_subtitle: "2-дневный тренинг-интенсив «Код боя: Управление телом и ситуацией»",
@@ -825,9 +884,10 @@
             popup_title: "Регистрация на тренинг",
             popup_desc: "Заполните форму и мы свяжемся с вами",
             popup_name: "Имя *",
-            popup_surname: "Фамилия *",
+            popup_surname: "Фамилия",
             popup_email: "Email *",
-            popup_phone: "Телефон *",
+            popup_phone: "Телефон (WhatsApp / Telegram) *",
+            phone_note: "📱 Пожалуйста, введите номер телефона с кодом страны для связи через WhatsApp/Telegram",
             popup_submit: "Отправить Заявку",
             language_info: "📢 Тренинг проводится на русском и украинском языках. В присутствии профессионального переводчика. Все участники будут обеспечены полноценным переводом.",
             limited: "⚠️ Количество мест ограничено! ⚠️",
@@ -835,18 +895,21 @@
             price1: "900 lei",
             price1_note: "первые 5 человек",
             price2: "1000 lei",
-            price2_note: "до 10 мая",
+            price2_note: "до 10 июня",
             price3: "1200 lei",
-            price3_note: "11-15 мая",
+            price3_note: "11-25 июня",
             extra_price: "+300 lei",
-            extra_desc: "Индивидуальная консультация + занятие для двух человек (1.5 часа) 15 и 16 мая",
-            hours_info: "⏰ Всего 10 часов: 15 мая (16:00-21:00) и 16 мая (09:00-14:00) ⏰",
+            extra_desc: "Индивидуальная консультация + занятие для двух человек (1.5 часа) 26 и 27 июня",
+            hours_info: "⏰ Всего 12 часов: 26 июня (6 часов) и 27 июня (6 часов) ⏰",
             book_btn: "🏃 ЗАБРОНИРОВАТЬ МЕСТО 🏃",
-            footer_logo: "КОД БОЯ"
+            footer_logo: "КОД БОЯ",
+            gallery1: "Моменты с тренировок",
+            gallery2: "Практика и отработка",
+            gallery3: "Атмосфера тренинга"
         },
         ro: {
             logo: "CODUL LUPTEI",
-            hero_date: "Antrenament în Cluj-Napoca, 15-16 mai 2026",
+            hero_date: "Antrenament în Cluj-Napoca, 26-27 iunie 2026",
             hero_title1: "CODUL",
             hero_title2: "LUPTEI",
             hero_subtitle: "Controlul Corpului și al Situației",
@@ -896,9 +959,9 @@
             schedule_subtitle: "📅 Orar:",
             address: "Adresa: Cluj-Napoca, Romania",
             travel2: "Centru!",
-            schedule_day1: "<strong>15 mai:</strong> 16:00 - 21:00 (5 ore)",
-            schedule_day2: "<strong>16 mai:</strong> 09:00 - 14:00 (5 ore)",
-            schedule_total: "<strong>Total: 10 ore</strong>",
+            schedule_day1: "<strong>26 iunie:</strong> 6 ore",
+            schedule_day2: "<strong>27 iunie:</strong> 6 ore",
+            schedule_total: "<strong>Total: 12 ore</strong>",
             location_note: "📍 Adresa exactă va fi trimisă după înregistrare",
             form_title: "Formular de înregistrare",
             form_subtitle: "Antrenament intensiv de 2 zile „Codul Luptei: Controlul Corpului și al Situației”",
@@ -907,9 +970,10 @@
             popup_title: "Înregistrare la antrenament",
             popup_desc: "Completați formularul și vă vom contacta",
             popup_name: "Prenume *",
-            popup_surname: "Nume de familie *",
+            popup_surname: "Nume de familie",
             popup_email: "Email *",
-            popup_phone: "Telefon *",
+            popup_phone: "Telefon (WhatsApp / Telegram) *",
+            phone_note: "📱 Vă rugăm să introduceți numărul de telefon cu codul țării pentru contact WhatsApp/Telegram",
             popup_submit: "Trimite cererea",
             language_info: "📢 Antrenamentul se desfășoară în limbile rusă și ucraineană. Cu prezența unui traducător profesionist. Toți participanții vor beneficia de traducere completă.",
             limited: "⚠️ Numărul de locuri este limitat! ⚠️",
@@ -917,18 +981,21 @@
             price1: "900 lei",
             price1_note: "primele 5 persoane",
             price2: "1000 lei",
-            price2_note: "până pe 10 mai",
+            price2_note: "până pe 10 iunie",
             price3: "1200 lei",
-            price3_note: "11-15 mai",
+            price3_note: "11-25 iunie",
             extra_price: "+300 lei",
-            extra_desc: "Consultanță individuală + sesiune pentru două persoane (1.5 ore) 15 și 16 mai",
-            hours_info: "⏰ Total 10 ore: 15 mai (16:00-21:00) și 16 mai (09:00-14:00) ⏰",
+            extra_desc: "Consultanță individuală + sesiune pentru două persoane (1.5 ore) 26 și 27 iunie",
+            hours_info: "⏰ Total 12 ore: 26 iunie (6 ore) și 27 iunie (6 ore) ⏰",
             book_btn: "🏃 REZERVĂ LOCUL 🏃",
-            footer_logo: "CODUL LUPTEI"
+            footer_logo: "CODUL LUPTEI",
+            gallery1: "Momente din antrenamente",
+            gallery2: "Practică și exerciții",
+            gallery3: "Atmosfera trainingului"
         },
         en: {
             logo: "COMBAT CODE",
-            hero_date: "Training in Cluj-Napoca, May 15-16, 2026",
+            hero_date: "Training in Cluj-Napoca, June 26-27, 2026",
             hero_title1: "COMBAT",
             hero_title2: "CODE",
             hero_subtitle: "Body and Situation Control",
@@ -978,9 +1045,9 @@
             schedule_subtitle: "📅 Schedule:",
             address: "Training address: Cluj-Napoca, Romania",
             travel2: "Right in the center!",
-            schedule_day1: "<strong>May 15:</strong> 16:00 - 21:00 (5 hours)",
-            schedule_day2: "<strong>May 16:</strong> 09:00 - 14:00 (5 hours)",
-            schedule_total: "<strong>Total: 10 hours</strong>",
+            schedule_day1: "<strong>June 26:</strong> 6 hours",
+            schedule_day2: "<strong>June 27:</strong> 6 hours",
+            schedule_total: "<strong>Total: 12 hours</strong>",
             location_note: "📍 Exact address will be sent after registration",
             form_title: "Registration Form",
             form_subtitle: "2-day intensive training \"Combat Code: Body and Situation Control\"",
@@ -989,9 +1056,10 @@
             popup_title: "Registration for training",
             popup_desc: "Fill out the form and we will contact you",
             popup_name: "First name *",
-            popup_surname: "Last name *",
+            popup_surname: "Last name",
             popup_email: "Email *",
-            popup_phone: "Phone *",
+            popup_phone: "Phone (WhatsApp / Telegram) *",
+            phone_note: "📱 Please enter your phone number with country code for WhatsApp/Telegram contact",
             popup_submit: "Submit Application",
             language_info: "📢 The training is conducted in Russian and Ukrainian. A professional interpreter will be present. All participants will be provided with full translation.",
             limited: "⚠️ Limited number of places! ⚠️",
@@ -999,14 +1067,17 @@
             price1: "900 lei",
             price1_note: "first 5 people",
             price2: "1000 lei",
-            price2_note: "until May 10",
+            price2_note: "until June 10",
             price3: "1200 lei",
-            price3_note: "May 11-15",
+            price3_note: "June 11-25",
             extra_price: "+300 lei",
-            extra_desc: "Individual consultation + session for two people (1.5 hours) on May 15 and 16",
-            hours_info: "⏰ Total 10 hours: May 15 (16:00-21:00) and May 16 (09:00-14:00) ⏰",
+            extra_desc: "Individual consultation + session for two people (1.5 hours) on June 26 and 27",
+            hours_info: "⏰ Total 12 hours: June 26 (6 hours) and June 27 (6 hours) ⏰",
             book_btn: "🏃 BOOK YOUR SPOT 🏃",
-            footer_logo: "COMBAT CODE"
+            footer_logo: "COMBAT CODE",
+            gallery1: "Training moments",
+            gallery2: "Practice and drills",
+            gallery3: "Training atmosphere"
         }
     };
 
@@ -1047,7 +1118,8 @@
     window.addEventListener('click', (e) => { if (e.target === popup) popup.style.display = 'none'; });
 
     async function sendToTelegram(name, surname, email, phone) {
-        const message = `🔔 НОВАЯ ЗАЯВКА НА ТРЕНИНГ! 🔔\n\n👤 Имя: ${name}\n👤 Фамилия: ${surname}\n📧 Email: ${email}\n📞 Телефон: ${phone}\n🌍 Язык страницы: ${currentLang.toUpperCase()}\n🕐 Время: ${new Date().toLocaleString('ro-RO')}\n📍 Тренинг: Клуж-Напока, 15-16 мая 2026\n🗣 Язык проведения: русский, украинский (с переводчиком)`;
+        const surnameText = surname ? surname : "не указана";
+        const message = `🔔 НОВАЯ ЗАЯВКА НА ТРЕНИНГ! 🔔\n\n👤 Имя: ${name}\n👤 Фамилия: ${surnameText}\n📧 Email: ${email}\n📞 Телефон (WhatsApp/Telegram): ${phone}\n🌍 Язык страницы: ${currentLang.toUpperCase()}\n🕐 Время: ${new Date().toLocaleString('ro-RO')}\n📍 Тренинг: Клуж-Напока, 26-27 июня 2026\n🗣 Язык проведения: русский, украинский (с переводчиком)`;
         
         const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
         
@@ -1073,12 +1145,12 @@
         const phone = document.getElementById('phone').value.trim();
         const statusDiv = document.getElementById('formStatus');
         
-        if (!name || !surname || !email || !phone) {
+        if (!name || !email || !phone) {
             statusDiv.style.display = 'block';
             statusDiv.className = 'loading-message error';
-            if (currentLang === 'ru') statusDiv.innerText = 'Пожалуйста, заполните все поля!';
-            else if (currentLang === 'ro') statusDiv.innerText = 'Vă rugăm să completați toate câmpurile!';
-            else statusDiv.innerText = 'Please fill in all fields!';
+            if (currentLang === 'ru') statusDiv.innerText = 'Пожалуйста, заполните обязательные поля (Имя, Email, Телефон)!';
+            else if (currentLang === 'ro') statusDiv.innerText = 'Vă rugăm să completați câmpurile obligatorii (Prenume, Email, Telefon)!';
+            else statusDiv.innerText = 'Please fill in the required fields (First name, Email, Phone)!';
             setTimeout(() => { statusDiv.style.display = 'none'; }, 3000);
             return;
         }
@@ -1124,3 +1196,4 @@
 </script>
 </body>
 </html>
+```
