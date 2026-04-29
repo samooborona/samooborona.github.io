@@ -470,6 +470,17 @@
             .pricing-grid { flex-direction: column; align-items: center; }
             .book-btn { font-size: 18px; }
         }
+@media (max-width: 768px) {
+    .logo {
+        flex-direction: column !important;
+        text-align: center;
+    }
+    .logo img {
+        margin-bottom: 10px;
+    }
+}
+
+
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
@@ -478,10 +489,13 @@
 <div class="op3-designer-element--content">
     <header class="header">
         <div class="container header-inner">
-            <div class="logo">
-                <h1>APERCON</h1>
-                <p>Apărare Personală Conștientă</p>
-            </div>
+            <div class="logo" style="display: flex; align-items: center; gap: 15px;">
+    <img src="logo.png" alt="APERCON Logo" style="height: 100px; width: auto;">
+    <div>
+        <h1>APERCON</h1>
+        <p>Apărare Personală Conștientă</p>
+    </div>
+</div>
             <div class="header-actions">
                 <div class="lang-switch">
                     <button class="lang-btn" data-lang="ru">РУС</button>
@@ -642,7 +656,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo"><h3>APERCON</h3><p style="color:#2E7D32;">Awareness & Control</p></div>
+                <div class="footer-logo"><h3>APERCON</h3>
                 <div class="footer-contacts"><p><strong>E-mail:</strong> <a href="mailto:apercon@proton.me">apercon@proton.me</a></p></div>
             </div>
             <div class="footer-bottom"><p>© 2026 APERCON | Разумная Самооборона | Клуж-Напока, Румыния</p></div>
@@ -675,7 +689,7 @@
     const translations = {
         ru: {
             address_info: "📍 Адрес и все детали будут отправлены вам в WhatsApp после регистрации",
-            hero_date: "Тренинг в Клуж-Напока 13-14 июня 2026 г. | 09:00 - 15:00",
+            hero_date: "Тренинг в Клуж-Напока 13-14 июня 2026 г.",
             hero_title1: "РАЗУМНАЯ", hero_title2: "САМООБОРОНА", hero_subtitle: "Apărare Personală Conștientă",
             hero_desc: "Получите навыки прикладного рукопашного боя и осознанной личной безопасности в экстремальных ситуациях под руководством опытного инструктора на двухдневном тренинге-интенсиве",
             hero_btn: "Записаться на тренинг",
@@ -706,7 +720,7 @@
         },
         ro: {
             address_info: "📍 Adresa și toate detaliile vă vor fi trimise pe WhatsApp după înregistrare",
-            hero_date: "Antrenament la Cluj-Napoca, 13-14 iunie 2026 | 09:00 - 15:00",
+            hero_date: "Antrenament la Cluj-Napoca, 13-14 iunie 2026",
             hero_title1: "APĂRARE", hero_title2: "PERSONALĂ CONȘTIENTĂ", hero_subtitle: "Разумная Самооборона",
             hero_desc: "Dezvoltați abilități de luptă corp la corp aplicată și siguranță personală conștientă în situații extreme, sub îndrumarea unui instructor experimentat, într-un antrenament intensiv de două zile.",
             hero_btn: "Înscrieți-vă la antrenament",
@@ -737,7 +751,7 @@
         },
         en: {
             address_info: "📍 The address and all details will be sent to you on WhatsApp after registration",
-            hero_date: "Training in Cluj-Napoca, June 13-14, 2026 | 09:00 - 15:00",
+            hero_date: "Training in Cluj-Napoca, June 13-14, 2026",
             hero_title1: "CONSCIOUS", hero_title2: "SELF-DEFENSE", hero_subtitle: "Apărare Personală Conștientă",
             hero_desc: "Gain applied hand-to-hand combat and conscious personal safety skills in extreme situations under the guidance of an experienced instructor at a two-day intensive training.",
             hero_btn: "Sign up for training",
